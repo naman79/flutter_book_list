@@ -4,16 +4,29 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String description;
+  final String image;
+
+  DetailScreen({
+    required this.title,
+    required this.subtitle,
+    required this.description,
+    required this.image,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('책 제목'),
+        title: Text(title),
       ),
       body: Column(
         children: [
           Image.network(
-            'https://image.aladin.co.kr/product/27434/22/cover500/k652733373_1.jpg',
+            image,
+            height: MediaQuery.of(context).size.height * 0.5,
           ),
           Padding(
             padding: EdgeInsets.all(3),
@@ -30,7 +43,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        '서비스를 성공시키는 기획자의 비법노트',
+                        title,
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -38,7 +51,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '- 서비스 기획 사수의 노하우를 담은 IT 기획의 정석',
+                      subtitle,
                       style: TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   ],
@@ -100,8 +113,7 @@ class DetailScreen extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(15),
-            child: Text(
-                '‘기획’이란 단어가 익숙해서 쉬울 줄 알았는데, 막상 공부를 시작해보니 방향을 잡는 것부터 막막하다. 그 막막한 과정을 이미 거쳐온 여러분의 사수 “조이”님이 친절하게 기획의 모모든 것을 설명한다. 불필요한 내용 하나 없이, 알아야 할 내용만 쏙쏙 기록했다.'),
+            child: Text(description),
           ),
         ],
       ),

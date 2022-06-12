@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book_list/screens/detail_screen.dart';
+import 'package:flutter_book_list/screens/detail_screen.dart';
 
 class ListScreen extends StatelessWidget {
   @override
@@ -68,18 +70,29 @@ class BookTile extends StatelessWidget {
   final String subtitle;
   final String description;
   final String image;
+
   BookTile({
     required this.title,
     required this.subtitle,
     required this.description,
     required this.image,
   });
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(title),
       leading: Image.network(image),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DetailScreen(
+            title: title,
+            subtitle: subtitle,
+            description: description,
+            image: image,
+          ),
+        ));
+      },
     );
   }
 }
